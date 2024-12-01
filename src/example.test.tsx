@@ -28,7 +28,9 @@ describe('Button', () => {
     const paragraph: HTMLElement = screen.getByText(/clicked 0 times/i)
 
     await userEvent.click(button)
+    await userEvent.click(button)
+    await userEvent.click(button)
 
-    expect(paragraph.textContent).toBe('Clicked 2 times')
+    expect(paragraph.textContent).toBe('Clicked 1 times')
   })
 })
