@@ -1,1 +1,4 @@
-export const App = () => <div className="text-red-500">vite-react-ts-eslint-prettier-husky</div>
+export const App = () => {
+  console.log('test')
+  return <div className="text-red-500">vite-react-ts-eslint-prettier-husky</div>
+}

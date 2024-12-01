@@ -13,9 +13,8 @@
   },
   "lint-staged": {
     "**/*.{ts,tsx}": [
-      "eslint .",
-      "prettier --write",
-      "test"
+      "eslint --fix",
+      "prettier --write"
     ]
   },
   "dependencies": {
