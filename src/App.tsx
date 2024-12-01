@@ -1,5 +1,5 @@
 export const App = () => {
-  console.log('testdasd')
-
+  const x = 10
+  console.log(x)
   return <div className="text-red-500">vite-react-ts-eslint-prettier-husky</div>
 }
