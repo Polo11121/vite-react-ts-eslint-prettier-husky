@@ -7,6 +7,8 @@ import reactRefresh from 'eslint-plugin-react-refresh'
 import importPlugin from 'eslint-plugin-import'
 import jsxA11y from 'eslint-plugin-jsx-a11y'
 import prettier from 'eslint-plugin-prettier/recommended'
+import testingLibrary from 'eslint-plugin-testing-library'
+import vitest from 'eslint-plugin-vitest'
 
 export default tseslint.config(
   { ignores: ['dist'] },
@@ -52,6 +54,27 @@ export default tseslint.config(
           endOfLine: 'auto'
         }
       ]
+    }
+  },
+  {
+    files: ['**/*.{spec,test}.{ts,tsx}'],
+    extends: [js.configs.recommended, ...tseslint.configs.recommended, prettier],
+    plugins: { 'testing-library': testingLibrary, vitest },
+    languageOptions: {
+      globals: { ...globals.browser, ...vitest.environments.env.globals }
+    },
+    rules: {
+      'testing-library/await-async-queries': 'error',
+      'testing-library/no-await-sync-queries': 'error',
+      'testing-library/no-debugging-utils': 'warn',
+      'testing-library/no-dom-import': 'off',
+      ...vitest.configs.recommended.rules,
+      'vitest/no-disabled-tests': 'warn',
+      'vitest/no-focused-tests': 'error',
+      'vitest/no-identical-title': 'error',
+      'vitest/prefer-to-have-length': 'warn',
+      'vitest/valid-expect': 'error',
+      'vitest/max-nested-describe': ['error', { max: 3 }]
     }
   }
 )
