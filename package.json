@@ -14,10 +14,8 @@
   "lint-staged": {
     "**/*.{ts,tsx}": [
       "eslint .",
-      "prettier --write"
-    ],
-    "**/*.{spec,test}.{ts,tsx}": [
-      "bun test"
+      "prettier --write",
+      "test"
     ]
   },
   "dependencies": {

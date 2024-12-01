@@ -1,12 +1,14 @@
+import { useState } from 'react'
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { useState } from 'react'
 
 export const Button = (): JSX.Element => {
   const [state, setState] = useState(0)
+
   const handleClick = (): void => {
     setState((value) => value + 1)
   }
+
   return (
     <>
       <button onClick={handleClick} type="button">
@@ -27,6 +29,6 @@ describe('Button', () => {
 
     await userEvent.click(button)
 
-    expect(paragraph.textContent).toBe('Clicked 1 times')
+    expect(paragraph.textContent).toBe('Clicked 2 times')
   })
 })
