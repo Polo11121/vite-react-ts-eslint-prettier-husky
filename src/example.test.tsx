@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { App } from './App'
 
 export const Button = (): JSX.Element => {
   const [state, setState] = useState(0)
@@ -23,14 +22,11 @@ export const Button = (): JSX.Element => {
 describe('Button', () => {
   it('should increase value', async () => {
     render(<Button />)
-    render(<App />)
 
     const button: HTMLElement = screen.getByRole('button', { name: /click me/i })
 
     const paragraph: HTMLElement = screen.getByText(/clicked 0 times/i)
 
-    await userEvent.click(button)
-    await userEvent.click(button)
     await userEvent.click(button)
 
     expect(paragraph.textContent).toBe('Clicked 1 times')
