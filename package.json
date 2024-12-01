@@ -15,7 +15,7 @@
     "**/*.{ts,tsx}": [
       "eslint .",
       "prettier --write",
-      "test"
+      "npm test"
     ]
   },
   "dependencies": {
